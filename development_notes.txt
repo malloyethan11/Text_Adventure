@@ -1,0 +1,5 @@
+==========================================================================
+need to redo dbo.choices and dbo.story_events
+--> story_events needs to have column event_number_id
+--> choices needs to also have column event_number_id
+==========================================================================

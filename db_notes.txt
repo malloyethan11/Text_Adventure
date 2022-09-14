@@ -1,0 +1,23 @@
+tables:
+--> story_events
+    --> id
+    --> text
+--> inventory
+    --> id
+    --> category
+    --> item_name
+    --> quantity
+    --> max_quantity
+    --> is_equipped
+--> attributes
+    --> id 
+    --> attribute_name
+    --> current_value
+    --> max_value
+--> choices
+    --> id
+    --> story_event_id FOREIGN KEY references story_events id
+--> saved_games
+    --> id
+    --> name
+    --> file_location

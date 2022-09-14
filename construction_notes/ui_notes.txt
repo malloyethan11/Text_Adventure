@@ -1,0 +1,13 @@
+what does the UI need to have?
+
+--> story text pane
+--> choices pane
+--> inventory list with tabs for categories
+--> update inventory button and form
+--> attribute stats list
+--> save and quit buttons
+--> upgrade stats button and form (when unlocked)
+--> armor stats pane
+--> equipped weapons pane
+--> health bar with "use healing item" button
+    --> "Too bad! There are no healing items in your inventory. Better be careful."
