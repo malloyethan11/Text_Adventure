@@ -3,3 +3,191 @@ need to redo dbo.choices and dbo.story_events
 --> story_events needs to have column event_number_id
 --> choices needs to also have column event_number_id
 ==========================================================================
+structure:
+beginning --> choice 1,2,3 --> story 2a,2b,2c --> each with choice 1,2,3
+	  --> story 3a,3b,3c,3d,3e,3f,3g,3h,3i --> each with choices 
+          --> story 4a,4b, etc...
+
+
+public class StoryEvent storyEvent1
+{
+    // properties
+    string storyEvent = "blah";
+    string choice1 = "blah";
+    string choice2 = "blah";
+    string choice3 = "blah";
+
+    // methods
+    public void displayStoryText()
+    {
+		main.text = storyEvent;
+    }
+	
+	public void displayChoices()
+	{
+		choice1.text = choice1;
+		choice2.text = choice2;
+		choice3.text = choice3;
+	}
+	
+	public string selectChoice(string choice)
+	{
+		switch
+		{
+			case choice1
+			{
+				return "storyEvent2a";
+			}
+			
+			case choice2
+			{
+				return "storyEvent2b";
+			}
+			
+			case choice3
+			{
+				return "storyEvent2c";
+			}
+			
+			default return String.Empty;
+		}
+	}
+}
+
+
+public class StoryEvent storyEvent2a
+{
+    // properties
+    string storyEvent = "blah";
+    string choice1 = "blah";
+    string choice2 = "blah";
+    string choice3 = "blah";
+
+    // methods
+    public void displayStoryText()
+    {
+		main.text = storyEvent;
+    }
+	
+	public void displayChoices()
+	{
+		choice1.text = choice1;
+		choice2.text = choice2;
+		choice3.text = choice3;
+	}
+	
+	public string selectChoice(string choice)
+	{
+		switch
+		{
+			case choice1
+			{
+				return "storyEvent3a";
+			}
+			
+			case choice2
+			{
+				return "storyEvent3b";
+			}
+			
+			case choice3
+			{
+				return "storyEvent3c";
+			}
+			
+			default return String.Empty;
+		}
+	}
+}
+
+
+public class StoryEvent storyEvent2b
+{
+    // properties
+    string storyEvent = "blah";
+    string choice1 = "blah";
+    string choice2 = "blah";
+    string choice3 = "blah";
+
+    // methods
+    public void displayStoryText()
+    {
+		main.text = storyEvent;
+    }
+	
+	public void displayChoices()
+	{
+		choice1.text = choice1;
+		choice2.text = choice2;
+		choice3.text = choice3;
+	}
+	
+	public string selectChoice(string choice)
+	{
+		switch
+		{
+			case choice1
+			{
+				return "storyEvent3d";
+			}
+			
+			case choice2
+			{
+				return "storyEvent3e";
+			}
+			
+			case choice3
+			{
+				return "storyEvent3f";
+			}
+			
+			default return String.Empty;
+		}
+	}
+}
+
+
+public class StoryEvent storyEvent2c
+{
+    // properties
+    string storyEvent = "blah";
+    string choice1 = "blah";
+    string choice2 = "blah";
+    string choice3 = "blah";
+
+    // methods
+    public void displayStoryText()
+    {
+		main.text = storyEvent;
+    }
+	
+	public void displayChoices()
+	{
+		choice1.text = choice1;
+		choice2.text = choice2;
+		choice3.text = choice3;
+	}
+	
+	public string selectChoice(string choice)
+	{
+		switch
+		{
+			case choice1
+			{
+				return "storyEvent3g";
+			}
+			
+			case choice2
+			{
+				return "storyEvent3h";
+			}
+			
+			case choice3
+			{
+				return "storyEvent3i";
+			}
+			
+			default return String.Empty;
+		}
+	}
+}
