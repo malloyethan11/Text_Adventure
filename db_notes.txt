@@ -1,7 +1,7 @@
 tables:
---> story_events
+--> story_events // e.g. | 2 | 2a | "blah" |
     --> id
-    --> section_id
+    --> story_section_id
     --> text
 --> inventory
     --> id
@@ -15,10 +15,9 @@ tables:
     --> attribute_name
     --> current_value
     --> max_value
---> choices
+--> choices // e.g. | 1 | 1a |
     --> id
-    --> story_id FOREIGN KEY references story_events id
-    --> section_id FOREIGN KEY references story_events section_id
+    --> story_section_id FOREIGN KEY references story_events story_section_id
 --> saved_games
     --> id
     --> name

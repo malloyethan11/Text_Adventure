@@ -153,6 +153,7 @@ namespace Text_Adventure
             this.quit.TabIndex = 10;
             this.quit.Text = "Quit";
             this.quit.UseVisualStyleBackColor = true;
+            this.quit.Click += new System.EventHandler(this.quit_Click);
             // 
             // save
             // 
