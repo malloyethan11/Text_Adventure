@@ -10,11 +10,11 @@ namespace Text_Adventure
     {
 
         // define dictionary of story events
-        Dictionary<string, string> storyEvents = new Dictionary<string, string>();
+        public static Dictionary<string, string> storyEvents = new Dictionary<string, string>();
 
         public StoryEvents()
         {
-            storyEvents.Add("1", "It worked!!! :D :D :D");
+            storyEvents.Add("1", "Dictionary worked!!! :D :D :D");
         }
     }
 }
