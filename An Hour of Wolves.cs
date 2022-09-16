@@ -17,8 +17,14 @@ namespace Text_Adventure
         {
             // setup UI
             // TODO: refactor component names to match C# conventions
+
             InitializeComponent();
-            story_event.Text = OpenDatabaseConnection().ToString();
+
+            // address the player
+            MessageBox.Show("Welcome to the game!");
+
+            SqlConnection connection = OpenDatabaseConnection();
+            story_event.Text = GetFirstEvent(connection);
             armor_stats.Items.Add("Armor");
             attribute_stats.Items.Add("Attributes");
             inventory.Items.Add("Inventory");
@@ -30,15 +36,26 @@ namespace Text_Adventure
         }
 
         // database methods
-        public string OpenDatabaseConnection()
+        public SqlConnection OpenDatabaseConnection()
         {
             var connectionString = "Server = ETHAN-DESKTOP\\SQLEXPRESS; Database = text_adventure; Trusted_Connection = True;";
-            var command = "SELECT story_text FROM story_events WHERE id = 1";
-            string row = "";
-
+            
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
+            
+            return connection;
+        }
+
+        public void CloseDatabaseConnection(SqlConnection connection)
+        {
+            connection.Close();
+        }
+
+        public string GetFirstEvent(SqlConnection connection)
+        {
+            string command = "SELECT story_text FROM story_events WHERE id = 1";
             SqlCommand selectFirstStory = new SqlCommand(command, connection);
+            string row = string.Empty;
 
             using (SqlDataReader result = selectFirstStory.ExecuteReader())
             {
@@ -50,16 +67,6 @@ namespace Text_Adventure
 
             return row;
         }
-
-        //public void CloseDatabaseConnection(SqlConnection connection)
-        //{
-        //    connection.Close();
-        //}
-
-        //public static string GetFirstEvent(string connectionString)
-        //{
-        //    return null;
-        //}
 
 
         // UI interactions
