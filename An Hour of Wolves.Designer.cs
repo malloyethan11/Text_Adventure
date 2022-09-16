@@ -134,6 +134,7 @@ namespace Text_Adventure
             this.choices.Name = "choices";
             this.choices.Size = new System.Drawing.Size(830, 334);
             this.choices.TabIndex = 8;
+            this.choices.SelectedIndexChanged += new System.EventHandler(this.choices_SelectedIndexChanged);
             // 
             // equipped_items
             // 
@@ -241,6 +242,7 @@ namespace Text_Adventure
             this.submit_choice.TabIndex = 19;
             this.submit_choice.Text = "Submit Choice";
             this.submit_choice.UseVisualStyleBackColor = true;
+            this.submit_choice.Click += new System.EventHandler(this.submit_choice_Click);
             // 
             // story_event
             // 

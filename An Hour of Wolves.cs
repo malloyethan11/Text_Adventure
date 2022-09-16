@@ -13,18 +13,15 @@ namespace Text_Adventure
 {
     public partial class main : Form
     {
+        private Story _story = new Story();
+        private Player _player = new Player();
+
         public main()
         {
             // setup UI
             // TODO: refactor component names to match C# conventions
-
             InitializeComponent();
-
-            // address the player
-            MessageBox.Show("Welcome to the game!");
-
-            SqlConnection connection = OpenDatabaseConnection();
-            story_event.Text = GetFirstEvent(connection);
+            story_event.Text = StoryEvents();
             armor_stats.Items.Add("Armor");
             attribute_stats.Items.Add("Attributes");
             inventory.Items.Add("Inventory");
@@ -32,44 +29,14 @@ namespace Text_Adventure
             current_health.Text = "100";
             max_health.Text = "100";
 
-            // 
+            // Load choices
+            LoadChoices();
+
         }
 
-        // database methods
-        public SqlConnection OpenDatabaseConnection()
-        {
-            var connectionString = "Server = ETHAN-DESKTOP\\SQLEXPRESS; Database = text_adventure; Trusted_Connection = True;";
-            
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-            
-            return connection;
-        }
-
-        public void CloseDatabaseConnection(SqlConnection connection)
-        {
-            connection.Close();
-        }
-
-        public string GetFirstEvent(SqlConnection connection)
-        {
-            string command = "SELECT story_text FROM story_events WHERE id = 1";
-            SqlCommand selectFirstStory = new SqlCommand(command, connection);
-            string row = string.Empty;
-
-            using (SqlDataReader result = selectFirstStory.ExecuteReader())
-            {
-                while (result.Read())
-                {
-                    row = result[0].ToString();
-                }
-            }
-
-            return row;
-        }
-
-
-        // UI interactions
+        // =============================================================================
+        // UI METHODS
+        // =============================================================================
         //private void label1_Click(object sender, EventArgs e)
         //{
 
@@ -79,6 +46,30 @@ namespace Text_Adventure
         {
             Application.Exit();
         }
+
+        private void choices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _story.UsersChoice = choices.SelectedItem?.ToString();
+        }
+
+        private void submit_choice_Click(object sender, EventArgs e)
+        {
+            AdvanceTheStory(_story.UsersChoice);
+            _story.UsersChoice = string.Empty;
+        }
+
+        // =============================================================================
+        // GAMEPLAY METHODS
+        // =============================================================================
+        private void AdvanceTheStory(string UsersChoice)
+        {
+
+        }
+
+
+
+
+
     }
 }
 
