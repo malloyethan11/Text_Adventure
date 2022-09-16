@@ -21,7 +21,7 @@ namespace Text_Adventure
             // setup UI
             // TODO: refactor component names to match C# conventions
             InitializeComponent();
-            story_event.Text = StoryEvents();
+            //story_event.Text = StoryEvents();
             armor_stats.Items.Add("Armor");
             attribute_stats.Items.Add("Attributes");
             inventory.Items.Add("Inventory");
@@ -30,7 +30,7 @@ namespace Text_Adventure
             max_health.Text = "100";
 
             // Load choices
-            LoadChoices();
+            //LoadChoices();
 
         }
 
