@@ -11,31 +11,36 @@ using System.Data.SqlClient;
 
 namespace Text_Adventure
 {
-    public partial class main : Form
+    public partial class Main : Form
     {
-        public main()
+        // ====================================================================================
+        // MAIN METHOD
+        // ====================================================================================
+        public Main()
         {
             // setup UI
-            // TODO: refactor component names to match C# conventions
-
             InitializeComponent();
+            SqlConnection connection = OpenDatabaseConnection();
+            StoryEvent.Text = GetFirstEvent(connection);
+            ArmorStats.Items.Add("Armor");
+            AttributeStats.Items.Add("Attributes");
+            Inventory.Items.Add("Inventory");
+            EquippedItems.Items.Add("Equipped Items");
+            CurrentHealth.Text = "100";
+            MaxHealth.Text = "100";
 
             // address the player
             MessageBox.Show("Welcome to the game!");
 
-            SqlConnection connection = OpenDatabaseConnection();
-            story_event.Text = GetFirstEvent(connection);
-            armor_stats.Items.Add("Armor");
-            attribute_stats.Items.Add("Attributes");
-            inventory.Items.Add("Inventory");
-            equipped_items.Items.Add("Equipped Items");
-            current_health.Text = "100";
-            max_health.Text = "100";
+            // Populate choices
+            populateChoices("1");
 
             // 
         }
 
-        // database methods
+        // ====================================================================================
+        // DATABASE METHODS
+        // ====================================================================================
         public SqlConnection OpenDatabaseConnection()
         {
             var connectionString = "Server = ETHAN-DESKTOP\\SQLEXPRESS; Database = text_adventure; Trusted_Connection = True;";
@@ -53,7 +58,7 @@ namespace Text_Adventure
 
         public string GetFirstEvent(SqlConnection connection)
         {
-            string command = "SELECT story_text FROM story_events WHERE id = 1";
+            string command = "SELECT StoryText FROM StoryEvents WHERE id = 1";
             SqlCommand selectFirstStory = new SqlCommand(command, connection);
             string row = string.Empty;
 
@@ -68,17 +73,51 @@ namespace Text_Adventure
             return row;
         }
 
+        public void populateChoices(string storySectionId)
+        {
+            SqlConnection connection = OpenDatabaseConnection();
+            string command = $"SELECT ChoiceText FROM choices WHERE StorySectionId = '{storySectionId}'";
+            SqlCommand populateChoicesDict = new SqlCommand(command, connection);
+            string row = string.Empty;
 
-        // UI interactions
-        //private void label1_Click(object sender, EventArgs e)
-        //{
+            using (SqlDataReader result = populateChoicesDict.ExecuteReader())
+            {
+                while (result.Read())
+                {
+                    row = result[0].ToString();
+                    Choices.Items.Add(row);
+                }
+            }
+            CloseDatabaseConnection(connection);
+        }
 
-        //}
 
+        // ====================================================================================
+        // UI METHODS
+        // ====================================================================================      
+        private void Choices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string userChoice = Choices.SelectedItem.ToString();
+            int choiceIndex = Int32.Parse(Choices.SelectedIndex.ToString());
+            AdvanceStory((choiceIndex + 1), userChoice);
+        }
+        
         void quit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
+        // ====================================================================================
+        // GAMEPLAY METHODS
+        // ====================================================================================
+        public void AdvanceStory(int choiceIndex, string userChoice)
+        {
+            SqlConnection connection = OpenDatabaseConnection();
+
+        }
+
+
+
     }
 }
 

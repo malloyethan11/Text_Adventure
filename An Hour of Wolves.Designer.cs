@@ -1,7 +1,7 @@
 ﻿
 namespace Text_Adventure
 {
-    partial class main
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -29,15 +29,15 @@ namespace Text_Adventure
         /// </summary>
         private void InitializeComponent()
         {
-            this.armor_stats = new System.Windows.Forms.ListBox();
-            this.attribute_stats = new System.Windows.Forms.ListBox();
-            this.inventory = new System.Windows.Forms.ListBox();
-            this.food = new System.Windows.Forms.RadioButton();
-            this.weapons = new System.Windows.Forms.RadioButton();
-            this.armor = new System.Windows.Forms.RadioButton();
-            this.potions = new System.Windows.Forms.RadioButton();
-            this.choices = new System.Windows.Forms.ListBox();
-            this.equipped_items = new System.Windows.Forms.ListBox();
+            this.ArmorStats = new System.Windows.Forms.ListBox();
+            this.AttributeStats = new System.Windows.Forms.ListBox();
+            this.Inventory = new System.Windows.Forms.ListBox();
+            this.Food = new System.Windows.Forms.RadioButton();
+            this.Weapons = new System.Windows.Forms.RadioButton();
+            this.Armor = new System.Windows.Forms.RadioButton();
+            this.Potions = new System.Windows.Forms.RadioButton();
+            this.Choices = new System.Windows.Forms.ListBox();
+            this.EquippedItems = new System.Windows.Forms.ListBox();
             this.quit = new System.Windows.Forms.Button();
             this.save = new System.Windows.Forms.Button();
             this.update_inventory = new System.Windows.Forms.Button();
@@ -45,105 +45,106 @@ namespace Text_Adventure
             this.use_potion = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.slash = new System.Windows.Forms.Label();
-            this.current_health = new System.Windows.Forms.Label();
-            this.max_health = new System.Windows.Forms.Label();
+            this.CurrentHealth = new System.Windows.Forms.Label();
+            this.MaxHealth = new System.Windows.Forms.Label();
             this.submit_choice = new System.Windows.Forms.Button();
-            this.story_event = new System.Windows.Forms.Label();
+            this.StoryEvent = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // armor_stats
+            // ArmorStats
             // 
-            this.armor_stats.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.armor_stats.FormattingEnabled = true;
-            this.armor_stats.ItemHeight = 22;
-            this.armor_stats.Location = new System.Drawing.Point(12, 12);
-            this.armor_stats.Name = "armor_stats";
-            this.armor_stats.Size = new System.Drawing.Size(282, 334);
-            this.armor_stats.TabIndex = 0;
+            this.ArmorStats.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ArmorStats.FormattingEnabled = true;
+            this.ArmorStats.ItemHeight = 22;
+            this.ArmorStats.Location = new System.Drawing.Point(12, 12);
+            this.ArmorStats.Name = "ArmorStats";
+            this.ArmorStats.Size = new System.Drawing.Size(282, 334);
+            this.ArmorStats.TabIndex = 0;
             // 
-            // attribute_stats
+            // AttributeStats
             // 
-            this.attribute_stats.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.attribute_stats.FormattingEnabled = true;
-            this.attribute_stats.ItemHeight = 22;
-            this.attribute_stats.Location = new System.Drawing.Point(12, 354);
-            this.attribute_stats.Name = "attribute_stats";
-            this.attribute_stats.Size = new System.Drawing.Size(282, 378);
-            this.attribute_stats.TabIndex = 1;
+            this.AttributeStats.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AttributeStats.FormattingEnabled = true;
+            this.AttributeStats.ItemHeight = 22;
+            this.AttributeStats.Location = new System.Drawing.Point(12, 354);
+            this.AttributeStats.Name = "AttributeStats";
+            this.AttributeStats.Size = new System.Drawing.Size(282, 378);
+            this.AttributeStats.TabIndex = 1;
             // 
-            // inventory
+            // Inventory
             // 
-            this.inventory.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inventory.FormattingEnabled = true;
-            this.inventory.ItemHeight = 22;
-            this.inventory.Location = new System.Drawing.Point(1136, 12);
-            this.inventory.Name = "inventory";
-            this.inventory.Size = new System.Drawing.Size(282, 334);
-            this.inventory.TabIndex = 3;
+            this.Inventory.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Inventory.FormattingEnabled = true;
+            this.Inventory.ItemHeight = 22;
+            this.Inventory.Location = new System.Drawing.Point(1136, 12);
+            this.Inventory.Name = "Inventory";
+            this.Inventory.Size = new System.Drawing.Size(282, 334);
+            this.Inventory.TabIndex = 3;
             // 
-            // food
+            // Food
             // 
-            this.food.AutoSize = true;
-            this.food.Location = new System.Drawing.Point(1136, 355);
-            this.food.Name = "food";
-            this.food.Size = new System.Drawing.Size(49, 17);
-            this.food.TabIndex = 4;
-            this.food.TabStop = true;
-            this.food.Text = "Food";
-            this.food.UseVisualStyleBackColor = true;
+            this.Food.AutoSize = true;
+            this.Food.Location = new System.Drawing.Point(1136, 355);
+            this.Food.Name = "Food";
+            this.Food.Size = new System.Drawing.Size(49, 17);
+            this.Food.TabIndex = 4;
+            this.Food.TabStop = true;
+            this.Food.Text = "Food";
+            this.Food.UseVisualStyleBackColor = true;
             // 
-            // weapons
+            // Weapons
             // 
-            this.weapons.AutoSize = true;
-            this.weapons.Location = new System.Drawing.Point(1198, 355);
-            this.weapons.Name = "weapons";
-            this.weapons.Size = new System.Drawing.Size(71, 17);
-            this.weapons.TabIndex = 5;
-            this.weapons.TabStop = true;
-            this.weapons.Text = "Weapons";
-            this.weapons.UseVisualStyleBackColor = true;
+            this.Weapons.AutoSize = true;
+            this.Weapons.Location = new System.Drawing.Point(1198, 355);
+            this.Weapons.Name = "Weapons";
+            this.Weapons.Size = new System.Drawing.Size(71, 17);
+            this.Weapons.TabIndex = 5;
+            this.Weapons.TabStop = true;
+            this.Weapons.Text = "Weapons";
+            this.Weapons.UseVisualStyleBackColor = true;
             // 
-            // armor
+            // Armor
             // 
-            this.armor.AutoSize = true;
-            this.armor.Location = new System.Drawing.Point(1284, 355);
-            this.armor.Name = "armor";
-            this.armor.Size = new System.Drawing.Size(52, 17);
-            this.armor.TabIndex = 6;
-            this.armor.TabStop = true;
-            this.armor.Text = "Armor";
-            this.armor.UseVisualStyleBackColor = true;
+            this.Armor.AutoSize = true;
+            this.Armor.Location = new System.Drawing.Point(1284, 355);
+            this.Armor.Name = "Armor";
+            this.Armor.Size = new System.Drawing.Size(52, 17);
+            this.Armor.TabIndex = 6;
+            this.Armor.TabStop = true;
+            this.Armor.Text = "Armor";
+            this.Armor.UseVisualStyleBackColor = true;
             // 
-            // potions
+            // Potions
             // 
-            this.potions.AutoSize = true;
-            this.potions.Location = new System.Drawing.Point(1355, 355);
-            this.potions.Name = "potions";
-            this.potions.Size = new System.Drawing.Size(60, 17);
-            this.potions.TabIndex = 7;
-            this.potions.TabStop = true;
-            this.potions.Text = "Potions";
-            this.potions.UseVisualStyleBackColor = true;
+            this.Potions.AutoSize = true;
+            this.Potions.Location = new System.Drawing.Point(1355, 355);
+            this.Potions.Name = "Potions";
+            this.Potions.Size = new System.Drawing.Size(60, 17);
+            this.Potions.TabIndex = 7;
+            this.Potions.TabStop = true;
+            this.Potions.Text = "Potions";
+            this.Potions.UseVisualStyleBackColor = true;
             // 
-            // choices
+            // Choices
             // 
-            this.choices.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.choices.FormattingEnabled = true;
-            this.choices.ItemHeight = 22;
-            this.choices.Location = new System.Drawing.Point(300, 355);
-            this.choices.Name = "choices";
-            this.choices.Size = new System.Drawing.Size(830, 334);
-            this.choices.TabIndex = 8;
+            this.Choices.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Choices.FormattingEnabled = true;
+            this.Choices.ItemHeight = 22;
+            this.Choices.Location = new System.Drawing.Point(300, 355);
+            this.Choices.Name = "Choices";
+            this.Choices.Size = new System.Drawing.Size(830, 334);
+            this.Choices.TabIndex = 8;
+            this.Choices.SelectedIndexChanged += new System.EventHandler(this.Choices_SelectedIndexChanged);
             // 
-            // equipped_items
+            // EquippedItems
             // 
-            this.equipped_items.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.equipped_items.FormattingEnabled = true;
-            this.equipped_items.ItemHeight = 22;
-            this.equipped_items.Location = new System.Drawing.Point(1136, 399);
-            this.equipped_items.Name = "equipped_items";
-            this.equipped_items.Size = new System.Drawing.Size(282, 290);
-            this.equipped_items.TabIndex = 9;
+            this.EquippedItems.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EquippedItems.FormattingEnabled = true;
+            this.EquippedItems.ItemHeight = 22;
+            this.EquippedItems.Location = new System.Drawing.Point(1136, 399);
+            this.EquippedItems.Name = "EquippedItems";
+            this.EquippedItems.Size = new System.Drawing.Size(282, 290);
+            this.EquippedItems.TabIndex = 9;
             // 
             // quit
             // 
@@ -213,25 +214,25 @@ namespace Text_Adventure
             this.slash.TabIndex = 16;
             this.slash.Text = "/";
             // 
-            // current_health
+            // CurrentHealth
             // 
-            this.current_health.AutoSize = true;
-            this.current_health.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.current_health.Location = new System.Drawing.Point(408, 703);
-            this.current_health.MinimumSize = new System.Drawing.Size(100, 34);
-            this.current_health.Name = "current_health";
-            this.current_health.Size = new System.Drawing.Size(100, 34);
-            this.current_health.TabIndex = 17;
+            this.CurrentHealth.AutoSize = true;
+            this.CurrentHealth.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentHealth.Location = new System.Drawing.Point(408, 703);
+            this.CurrentHealth.MinimumSize = new System.Drawing.Size(100, 34);
+            this.CurrentHealth.Name = "CurrentHealth";
+            this.CurrentHealth.Size = new System.Drawing.Size(100, 34);
+            this.CurrentHealth.TabIndex = 17;
             // 
-            // max_health
+            // MaxHealth
             // 
-            this.max_health.AutoSize = true;
-            this.max_health.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.max_health.Location = new System.Drawing.Point(531, 703);
-            this.max_health.MinimumSize = new System.Drawing.Size(100, 34);
-            this.max_health.Name = "max_health";
-            this.max_health.Size = new System.Drawing.Size(100, 34);
-            this.max_health.TabIndex = 18;
+            this.MaxHealth.AutoSize = true;
+            this.MaxHealth.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaxHealth.Location = new System.Drawing.Point(531, 703);
+            this.MaxHealth.MinimumSize = new System.Drawing.Size(100, 34);
+            this.MaxHealth.Name = "MaxHealth";
+            this.MaxHealth.Size = new System.Drawing.Size(100, 34);
+            this.MaxHealth.TabIndex = 18;
             // 
             // submit_choice
             // 
@@ -242,27 +243,27 @@ namespace Text_Adventure
             this.submit_choice.Text = "Submit Choice";
             this.submit_choice.UseVisualStyleBackColor = true;
             // 
-            // story_event
+            // StoryEvent
             // 
-            this.story_event.AutoSize = true;
-            this.story_event.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.story_event.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.story_event.Location = new System.Drawing.Point(307, 12);
-            this.story_event.MinimumSize = new System.Drawing.Size(820, 334);
-            this.story_event.Name = "story_event";
-            this.story_event.Size = new System.Drawing.Size(820, 334);
-            this.story_event.TabIndex = 20;
-            this.story_event.Text = "label2";
+            this.StoryEvent.AutoSize = true;
+            this.StoryEvent.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.StoryEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StoryEvent.Location = new System.Drawing.Point(307, 12);
+            this.StoryEvent.MinimumSize = new System.Drawing.Size(820, 334);
+            this.StoryEvent.Name = "StoryEvent";
+            this.StoryEvent.Size = new System.Drawing.Size(820, 334);
+            this.StoryEvent.TabIndex = 20;
+            this.StoryEvent.Text = "label2";
             // 
-            // main
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1430, 748);
-            this.Controls.Add(this.story_event);
+            this.Controls.Add(this.StoryEvent);
             this.Controls.Add(this.submit_choice);
-            this.Controls.Add(this.max_health);
-            this.Controls.Add(this.current_health);
+            this.Controls.Add(this.MaxHealth);
+            this.Controls.Add(this.CurrentHealth);
             this.Controls.Add(this.slash);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.use_potion);
@@ -270,16 +271,16 @@ namespace Text_Adventure
             this.Controls.Add(this.update_inventory);
             this.Controls.Add(this.save);
             this.Controls.Add(this.quit);
-            this.Controls.Add(this.equipped_items);
-            this.Controls.Add(this.choices);
-            this.Controls.Add(this.potions);
-            this.Controls.Add(this.armor);
-            this.Controls.Add(this.weapons);
-            this.Controls.Add(this.food);
-            this.Controls.Add(this.inventory);
-            this.Controls.Add(this.attribute_stats);
-            this.Controls.Add(this.armor_stats);
-            this.Name = "main";
+            this.Controls.Add(this.EquippedItems);
+            this.Controls.Add(this.Choices);
+            this.Controls.Add(this.Potions);
+            this.Controls.Add(this.Armor);
+            this.Controls.Add(this.Weapons);
+            this.Controls.Add(this.Food);
+            this.Controls.Add(this.Inventory);
+            this.Controls.Add(this.AttributeStats);
+            this.Controls.Add(this.ArmorStats);
+            this.Name = "Main";
             this.Text = "An Hour of Wolves";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -288,15 +289,15 @@ namespace Text_Adventure
 
         #endregion
 
-        private System.Windows.Forms.ListBox armor_stats;
-        private System.Windows.Forms.ListBox attribute_stats;
-        private System.Windows.Forms.ListBox inventory;
-        private System.Windows.Forms.RadioButton food;
-        private System.Windows.Forms.RadioButton weapons;
-        private System.Windows.Forms.RadioButton armor;
-        private System.Windows.Forms.RadioButton potions;
-        private System.Windows.Forms.ListBox choices;
-        private System.Windows.Forms.ListBox equipped_items;
+        private System.Windows.Forms.ListBox ArmorStats;
+        private System.Windows.Forms.ListBox AttributeStats;
+        private System.Windows.Forms.ListBox Inventory;
+        private System.Windows.Forms.RadioButton Food;
+        private System.Windows.Forms.RadioButton Weapons;
+        private System.Windows.Forms.RadioButton Armor;
+        private System.Windows.Forms.RadioButton Potions;
+        private System.Windows.Forms.ListBox Choices;
+        private System.Windows.Forms.ListBox EquippedItems;
         private System.Windows.Forms.Button quit;
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.Button update_inventory;
@@ -304,10 +305,10 @@ namespace Text_Adventure
         private System.Windows.Forms.Button use_potion;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label slash;
-        private System.Windows.Forms.Label current_health;
-        private System.Windows.Forms.Label max_health;
+        private System.Windows.Forms.Label CurrentHealth;
+        private System.Windows.Forms.Label MaxHealth;
         private System.Windows.Forms.Button submit_choice;
-        private System.Windows.Forms.Label story_event;
+        private System.Windows.Forms.Label StoryEvent;
     }
 }
 
