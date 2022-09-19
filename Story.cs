@@ -12,12 +12,13 @@ namespace Text_Adventure
         public int CurrentStoryEvent { get; set; }
         public string UsersChoice { get; set; }
 
-
+        public string NextStoryId { get; set; }
 
         public Story()
         {
             CurrentStoryEvent = 1;
             UsersChoice = string.Empty;
+            NextStoryId = string.Empty;
         }
 
     }

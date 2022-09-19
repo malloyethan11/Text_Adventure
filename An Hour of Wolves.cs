@@ -137,7 +137,7 @@ namespace Text_Adventure
             CloseDatabaseConnection(connection);
         }   
         
-        public void populateStoryText(string storySectionId)
+        public void populateStoryText(string storyId)
         {
             //if (storySectionId == "1a" || storySectionId == "1b" || storySectionId == "1c")
             //{
@@ -156,7 +156,7 @@ namespace Text_Adventure
             //}
 
             SqlConnection connection = OpenDatabaseConnection();
-            string command = $"SELECT StoryText FROM StoryEvents WHERE StorySectionId = '{storySectionId}'";
+            string command = $"SELECT StoryText FROM StoryEvents WHERE StoryId = '{storyId}'";
             SqlCommand getStoryText = new SqlCommand(command, connection);
             string row = string.Empty;
 
@@ -186,6 +186,7 @@ namespace Text_Adventure
             selectedIndex += 1;
             string choiceId = selectedIndex.ToString();
             string storyNum = story.CurrentStoryEvent.ToString();
+            story.NextStoryId = (story.CurrentStoryEvent + 1).ToString();
             int nextStoryEvent = Int32.Parse(storyNum);
 
             if (Choices.Items.Count > 0)
@@ -198,12 +199,15 @@ namespace Text_Adventure
             {
                 case "1":
                     choiceId = storyNum + "a";
+                    story.NextStoryId += "a";
                     break;
                 case "2":
                     choiceId = storyNum + "b";
+                    story.NextStoryId += "b";
                     break;
                 case "3":
                     choiceId = storyNum + "c";
+                    story.NextStoryId += "c";
                     break;
             }
 
@@ -222,7 +226,7 @@ namespace Text_Adventure
         public void AdvanceStory(string choiceId, int nextStoryEvent)
         {
             story.CurrentStoryEvent = nextStoryEvent + 1;
-            populateStoryText(choiceId);
+            populateStoryText(story.NextStoryId);
             populateChoices(choiceId);
         }
 
