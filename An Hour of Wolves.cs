@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms.VisualStyles;
 
 namespace Text_Adventure
 {
     public partial class Main : Form
     {
+        Story story = new Story();
+
         // ====================================================================================
         // MAIN METHOD
         // ====================================================================================
@@ -21,21 +24,18 @@ namespace Text_Adventure
             // setup UI
             InitializeComponent();
             SqlConnection connection = OpenDatabaseConnection();
-            StoryEvent.Text = GetFirstEvent(connection);
+
             ArmorStats.Items.Add("Armor");
             AttributeStats.Items.Add("Attributes");
             Inventory.Items.Add("Inventory");
             EquippedItems.Items.Add("Equipped Items");
             CurrentHealth.Text = "100";
             MaxHealth.Text = "100";
+            int storySections = GetStoryEventCount();
+            story.CurrentStoryEvent = 1;
 
-            // address the player
-            MessageBox.Show("Welcome to the game!");
-
-            // Populate choices
-            populateChoices("1");
-
-            // 
+            StoryEvent.Text = GetFirstEvent(connection);
+            populateInitialChoices();
         }
 
         // ====================================================================================
@@ -73,10 +73,22 @@ namespace Text_Adventure
             return row;
         }
 
-        public void populateChoices(string storySectionId)
+        public int GetStoryEventCount()
+        {
+            string commandText = "SELECT COUNT (DISTINCT StorySection) AS Ids FROM Choices";
+            SqlConnection connection = OpenDatabaseConnection();
+            SqlCommand command = new SqlCommand(commandText, connection);
+
+            Int32 result = (int)command.ExecuteScalar();
+            CloseDatabaseConnection(connection);
+
+            return result;
+        }
+
+        public void populateInitialChoices()
         {
             SqlConnection connection = OpenDatabaseConnection();
-            string command = $"SELECT ChoiceText FROM choices WHERE StorySectionId = '{storySectionId}'";
+            string command = $"SELECT ChoiceText FROM Choices WHERE StorySectionWithChoiceId = '1a' OR StorySectionWithChoiceId = '1b' OR StorySectionWithChoiceId = '1c'";
             SqlCommand populateChoicesDict = new SqlCommand(command, connection);
             string row = string.Empty;
 
@@ -91,15 +103,112 @@ namespace Text_Adventure
             CloseDatabaseConnection(connection);
         }
 
+        public void populateChoices(string choiceId)
+        {
+            if (choiceId == "1a" || choiceId == "1b" || choiceId == "1c")
+            {
+                switch (choiceId)
+                {
+                    case "1a":
+                        choiceId = "2a";
+                        break;
+                    case "1b":
+                        choiceId = "2b";
+                        break;
+                    case "1c":
+                        choiceId = "2c";
+                        break;
+                }
+            }
+
+            SqlConnection connection = OpenDatabaseConnection();
+            string command = $"SELECT ChoiceText FROM Choices WHERE StorySectionWithChoiceId = '{choiceId}'";
+            SqlCommand populateChoiceOptions = new SqlCommand(command, connection);
+            string row = string.Empty;
+
+            using (SqlDataReader result = populateChoiceOptions.ExecuteReader())
+            {
+                while (result.Read())
+                {
+                    row = result[0].ToString();
+                    Choices.Items.Add(row);
+                }
+            }
+            CloseDatabaseConnection(connection);
+        }   
+        
+        public void populateStoryText(string storySectionId)
+        {
+            //if (storySectionId == "1a" || storySectionId == "1b" || storySectionId == "1c")
+            //{
+            //    switch (storySectionId)
+            //    {
+            //        case "1a":
+            //            storySectionId = "2a";
+            //            break;
+            //        case "1b":
+            //            storySectionId = "2b";
+            //            break;
+            //        case "1c":
+            //            storySectionId = "2c";
+            //            break;
+            //    }
+            //}
+
+            SqlConnection connection = OpenDatabaseConnection();
+            string command = $"SELECT StoryText FROM StoryEvents WHERE StorySectionId = '{storySectionId}'";
+            SqlCommand getStoryText = new SqlCommand(command, connection);
+            string row = string.Empty;
+
+            using (SqlDataReader result = getStoryText.ExecuteReader())
+            {
+                while (result.Read())
+                {
+                    row = result[0].ToString();
+                }
+            }
+
+            StoryEvent.Text = row + "\n" + story.CurrentStoryEvent;
+
+            CloseDatabaseConnection(connection);
+        }
+
 
         // ====================================================================================
         // UI METHODS
         // ====================================================================================      
         private void Choices_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string userChoice = Choices.SelectedItem.ToString();
-            int choiceIndex = Int32.Parse(Choices.SelectedIndex.ToString());
-            AdvanceStory((choiceIndex + 1), userChoice);
+            SqlConnection connection = OpenDatabaseConnection();
+            //SqlCommand command = "SELECT StorySectionWithChoiceId, "
+            string userChoiceText = Choices.SelectedItem.ToString();
+            int selectedIndex = Choices.SelectedIndex;
+            selectedIndex += 1;
+            string choiceId = selectedIndex.ToString();
+            string storyNum = story.CurrentStoryEvent.ToString();
+            int nextStoryEvent = Int32.Parse(storyNum);
+
+            if (Choices.Items.Count > 0)
+            {
+                Choices.Items.Clear();
+            }
+
+            // choiceId == selectedIndex
+            switch (choiceId)
+            {
+                case "1":
+                    choiceId = storyNum + "a";
+                    break;
+                case "2":
+                    choiceId = storyNum + "b";
+                    break;
+                case "3":
+                    choiceId = storyNum + "c";
+                    break;
+            }
+
+            SetChoice(choiceId);
+            AdvanceStory(choiceId, nextStoryEvent);
         }
         
         void quit_Click(object sender, EventArgs e)
@@ -110,10 +219,16 @@ namespace Text_Adventure
         // ====================================================================================
         // GAMEPLAY METHODS
         // ====================================================================================
-        public void AdvanceStory(int choiceIndex, string userChoice)
+        public void AdvanceStory(string choiceId, int nextStoryEvent)
         {
-            SqlConnection connection = OpenDatabaseConnection();
+            story.CurrentStoryEvent = nextStoryEvent + 1;
+            populateStoryText(choiceId);
+            populateChoices(choiceId);
+        }
 
+        public void SetChoice(string ChoiceId)
+        {
+            story.UsersChoice = ChoiceId;
         }
 
 
