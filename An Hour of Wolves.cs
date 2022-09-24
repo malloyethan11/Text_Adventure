@@ -36,6 +36,7 @@ namespace Text_Adventure
 
             StoryEvent.Text = GetFirstEvent(connection);
             populateInitialChoices();
+            populateInventory();
         }
 
         // ====================================================================================
@@ -98,6 +99,24 @@ namespace Text_Adventure
                 {
                     row = result[0].ToString();
                     Choices.Items.Add(row);
+                }
+            }
+            CloseDatabaseConnection(connection);
+        }
+
+        public void populateInventory()
+        {
+            SqlConnection connection = OpenDatabaseConnection();
+            string command = "SELECT ItemName, Quantity, IsEquipped FROM Inventory";
+            SqlCommand populateInventory = new SqlCommand(command, connection);
+            string row = string.Empty;
+
+            using (SqlDataReader result = populateInventory.ExecuteReader())
+            {
+                while (result.Read())
+                {
+                    row = result[0].ToString();
+                    Inventory.Items.Add(row);
                 }
             }
             CloseDatabaseConnection(connection);
